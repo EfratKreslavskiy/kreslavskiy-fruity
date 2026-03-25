@@ -1,7 +1,6 @@
 package kreslavskiy.fruity;
 
-public record Nutritions(int calories, int fat, int sugar, int carbohydrates, int protein)
+public record Nutritions(double calories, double fat, double sugar, double carbohydrates, double protein)
 {
-
 
 }
