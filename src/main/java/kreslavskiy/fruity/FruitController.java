@@ -22,8 +22,8 @@ public class FruitController
     private final JLabel carbs;
     private final JLabel proteins;
 
-    public FruitController(FruityService service, JLabel picture, JTextField name, JLabel family, JLabel order, JLabel genus,
-                           JLabel calories, JLabel fats, JLabel sugars, JLabel carbs, JLabel proteins)
+    public FruitController(FruityService service, JLabel picture, JTextField name, JLabel family, JLabel order,
+                           JLabel genus, JLabel calories, JLabel fats, JLabel sugars, JLabel carbs, JLabel proteins)
     {
         this.service = service;
         this.picture = picture;
@@ -48,7 +48,7 @@ public class FruitController
                 .observeOn(Schedulers.from(SwingUtilities::invokeLater))
                 .subscribe(
                         this :: handleResponse,
-                        Throwable::printStackTrace);
+                        Throwable :: printStackTrace);
     }
 
     private void handleResponse(Fruit fruit)
