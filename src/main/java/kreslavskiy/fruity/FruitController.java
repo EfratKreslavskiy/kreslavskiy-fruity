@@ -45,7 +45,7 @@ public class FruitController
                 // tells Rx to request the data on a background Thread
                 .subscribeOn(Schedulers.io())
                 // tells Rx to handle the response on Swing's main Thread
-                .observeOn(Schedulers.from(SwingUtilities::invokeLater))
+                .observeOn(Schedulers.from(SwingUtilities :: invokeLater))
                 .subscribe(
                         this :: handleResponse,
                         Throwable :: printStackTrace);
