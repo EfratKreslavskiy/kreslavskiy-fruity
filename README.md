@@ -1,11 +1,13 @@
-### Project Name
+### Fruity UI
 
 Add a description
 
 ### Screenshots
 
-Put screenshots here
+![Fruity UI Screenshot](src\main\resources\screenshots\RandomImageScreenshot.png)
 
 #### Links
 
-- [name](http://url)
+- [JUnit](https://junit.org/)
+- [Mockito](https://site.mockito.org/)
+- [GridBagLayout](https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html)
