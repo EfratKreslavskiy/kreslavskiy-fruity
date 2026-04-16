@@ -4,7 +4,7 @@ Add a description
 
 ### Screenshots
 
-![Fruity UI Screenshot](src\main\resources\screenshots\RandomImageScreenshot.png)
+![Fruity UI Screenshot](src\main\resources\screenshots\Screenshot.png)
 
 #### Links
 
