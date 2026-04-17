@@ -46,7 +46,7 @@ public class FruitFrame extends JFrame
         constraints.gridy = 1;
         constraints.gridheight = 9;
         constraints.gridwidth = 2;
-        JLabel picture = new JLabel("");
+        JLabel picture = new JLabel();
         add(picture, constraints);
 
         constraints = new GridBagConstraints();
@@ -58,7 +58,7 @@ public class FruitFrame extends JFrame
         constraints = new GridBagConstraints();
         constraints.gridx = 3;
         constraints.gridy = 1;
-        JLabel family = new JLabel("");
+        JLabel family = new JLabel();
         add(family, constraints);
 
         constraints = new GridBagConstraints();
@@ -70,7 +70,7 @@ public class FruitFrame extends JFrame
         constraints = new GridBagConstraints();
         constraints.gridx = 3;
         constraints.gridy = 2;
-        JLabel order = new JLabel("");
+        JLabel order = new JLabel();
         add(order, constraints);
 
         constraints = new GridBagConstraints();
@@ -82,7 +82,7 @@ public class FruitFrame extends JFrame
         constraints = new GridBagConstraints();
         constraints.gridx = 3;
         constraints.gridy = 3;
-        JLabel genus = new JLabel("");
+        JLabel genus = new JLabel();
         add(genus, constraints);
 
         constraints = new GridBagConstraints();
@@ -94,7 +94,7 @@ public class FruitFrame extends JFrame
         constraints = new GridBagConstraints();
         constraints.gridx = 3;
         constraints.gridy = 4;
-        JLabel calories = new JLabel("");
+        JLabel calories = new JLabel();
         add(calories, constraints);
 
         constraints = new GridBagConstraints();
@@ -106,7 +106,7 @@ public class FruitFrame extends JFrame
         constraints = new GridBagConstraints();
         constraints.gridx = 3;
         constraints.gridy = 5;
-        JLabel fat = new JLabel("");
+        JLabel fat = new JLabel();
         add(fat, constraints);
 
         constraints = new GridBagConstraints();
@@ -118,7 +118,7 @@ public class FruitFrame extends JFrame
         constraints = new GridBagConstraints();
         constraints.gridx = 3;
         constraints.gridy = 6;
-        JLabel sugar = new JLabel("");
+        JLabel sugar = new JLabel();
         add(sugar, constraints);
 
         constraints = new GridBagConstraints();
@@ -130,7 +130,7 @@ public class FruitFrame extends JFrame
         constraints = new GridBagConstraints();
         constraints.gridx = 3;
         constraints.gridy = 7;
-        JLabel carbs = new JLabel("");
+        JLabel carbs = new JLabel();
         add(carbs, constraints);
 
         constraints = new GridBagConstraints();
@@ -142,7 +142,7 @@ public class FruitFrame extends JFrame
         constraints = new GridBagConstraints();
         constraints.gridx = 3;
         constraints.gridy = 8;
-        JLabel protein = new JLabel("");
+        JLabel protein = new JLabel();
         add(protein, constraints);
 
         FruityService service = new FruityServiceFactory().create();

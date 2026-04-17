@@ -1,6 +1,8 @@
 ### Fruity UI
 
-Add a description
+This project collects information about a given fruit from www.fruityvice.com,
+and displays a picture of the fruit on an interactive UI, 
+along with it's nutrition and biological information.
 
 ### Screenshots
 
