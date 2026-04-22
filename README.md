@@ -1,11 +1,15 @@
-### Project Name
+### Fruity UI
 
-Add a description
+This project collects information about a given fruit from www.fruityvice.com,
+and displays a picture of the fruit on an interactive UI, 
+along with it's nutrition and biological information.
 
 ### Screenshots
 
-Put screenshots here
+![Fruity UI Screenshot](src\main\resources\screenshots\Screenshot.png)
 
 #### Links
 
-- [name](http://url)
+- [JUnit](https://junit.org/)
+- [GridBagLayout](https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html)
+- [FruityVice](https://fruityvice.com/)
