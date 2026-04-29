@@ -16,7 +16,7 @@ class UnsplashServiceTest
         UnsplashService service =  new UnsplashServiceFactory().create();
 
         //when
-        Photos photos = service.search(
+        Photos photos = service.getUnsplash(
                 keyString,
                 "strawberry"
         ).blockingGet();

@@ -12,7 +12,8 @@ import java.net.URL;
 
 public class FruitController
 {
-    private final UnsplashService service;
+    private final FruityService fruityService;
+    private final UnsplashService unsplashService;
     private final JLabel picture;
     private final JTextField name;
     private final JLabel family;
@@ -24,11 +25,12 @@ public class FruitController
     private final JLabel carbs;
     private final JLabel proteins;
 
-    public FruitController(UnsplashService service, JLabel picture, JTextField name, JLabel family,
-                           JLabel order, JLabel genus, JLabel calories, JLabel fats, JLabel sugars, JLabel carbs,
-                           JLabel proteins)
+    public FruitController(FruityService fruityService, UnsplashService unsplashService, JLabel picture,
+                           JTextField name, JLabel family, JLabel order, JLabel genus, JLabel calories,
+                           JLabel fats, JLabel sugars, JLabel carbs, JLabel proteins)
     {
-        this.service = service;
+        this.fruityService = fruityService;
+        this.unsplashService = unsplashService;
         this.picture = picture;
         this.name = name;
         this.family = family;
@@ -58,7 +60,7 @@ public class FruitController
                         Throwable:: printStackTrace);
 
         UnsplashService unsplashService = new UnsplashServiceFactory().create();
-        Disposable imageDisposable = unsplashService.search(keyString, fruitName)
+        Disposable imageDisposable = unsplashService.getUnsplash(keyString, fruitName)
                 // tells Rx to request the data on a background Thread
                 .subscribeOn(Schedulers.io())
                 // tells Rx to handle the response on Swing's main Thread

@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 public interface UnsplashService
 {
     @GET("/search/photos")
-    Single<Photos> search(
+    Single<Photos> getUnsplash(
             @Query("client_id") String clientId,
             @Query("query") String query);
 }
