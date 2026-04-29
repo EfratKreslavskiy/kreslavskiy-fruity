@@ -1,7 +1,9 @@
 package kreslavskiy.fruity;
 
+import com.andrewoid.apikeys.ApiKey;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import kreslavskiy.fruity.unsplash.*;
 
 import javax.swing.*;
 import java.net.MalformedURLException;
@@ -10,7 +12,8 @@ import java.net.URL;
 
 public class FruitController
 {
-    private final FruityService service;
+    private final FruityService fruityService;
+    private final UnsplashService unsplashService;
     private final JLabel picture;
     private final JTextField name;
     private final JLabel family;
@@ -22,10 +25,12 @@ public class FruitController
     private final JLabel carbs;
     private final JLabel proteins;
 
-    public FruitController(FruityService service, JLabel picture, JTextField name, JLabel family, JLabel order,
-                           JLabel genus, JLabel calories, JLabel fats, JLabel sugars, JLabel carbs, JLabel proteins)
+    public FruitController(FruityService fruityService, UnsplashService unsplashService, JLabel picture,
+                           JTextField name, JLabel family, JLabel order, JLabel genus, JLabel calories,
+                           JLabel fats, JLabel sugars, JLabel carbs, JLabel proteins)
     {
-        this.service = service;
+        this.fruityService = fruityService;
+        this.unsplashService = unsplashService;
         this.picture = picture;
         this.name = name;
         this.family = family;
@@ -41,13 +46,27 @@ public class FruitController
     public void doSearch()
     {
         String fruitName = name.getText();
-        Disposable disposable = service.getFruit(fruitName)
+        ApiKey apiKey = new ApiKey();
+        String keyString = apiKey.get();
+
+        FruityService fruitService =  new FruityServiceFactory().create();
+        Disposable disposable = fruitService.getFruit(fruitName)
                 // tells Rx to request the data on a background Thread
                 .subscribeOn(Schedulers.io())
                 // tells Rx to handle the response on Swing's main Thread
                 .observeOn(Schedulers.from(SwingUtilities:: invokeLater))
                 .subscribe(
                         this:: handleResponse,
+                        Throwable:: printStackTrace);
+
+        UnsplashService unsplashService = new UnsplashServiceFactory().create();
+        Disposable imageDisposable = unsplashService.getUnsplash(keyString, fruitName)
+                // tells Rx to request the data on a background Thread
+                .subscribeOn(Schedulers.io())
+                // tells Rx to handle the response on Swing's main Thread
+                .observeOn(Schedulers.from(SwingUtilities:: invokeLater))
+                .subscribe(
+                        this:: handleImageResponse,
                         Throwable:: printStackTrace);
     }
 
@@ -62,14 +81,19 @@ public class FruitController
         sugars.setText(String.valueOf(nutritions.sugar()));
         carbs.setText(String.valueOf(nutritions.carbohydrates()));
         proteins.setText(String.valueOf(nutritions.protein()));
+    }
+
+    private void handleImageResponse(Photos photos)
+    {
+
+        String smallUrl = photos.results()[0].urls().small();
 
         try {
-            ImageIcon imageIcon = new ImageIcon(new URL("https://picsum.photos/800/600"));
+            ImageIcon imageIcon = new ImageIcon(new URL(smallUrl));
             picture.setIcon(imageIcon);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
     }
 
 }

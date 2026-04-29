@@ -1,5 +1,8 @@
 package kreslavskiy.fruity;
 
+import kreslavskiy.fruity.unsplash.UnsplashService;
+import kreslavskiy.fruity.unsplash.UnsplashServiceFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -145,9 +148,10 @@ public class FruitFrame extends JFrame
         JLabel protein = new JLabel();
         add(protein, constraints);
 
-        FruityService service = new FruityServiceFactory().create();
-        FruitController fruitController = new FruitController(service, picture, searchbar, family, order,
-                                                                    genus, calories, fat, sugar, carbs, protein);
+        FruityService fruityService = new FruityServiceFactory().create();
+        UnsplashService unsplashService = new UnsplashServiceFactory().create();
+        FruitController fruitController = new FruitController(fruityService, unsplashService, picture, searchbar,
+                                                            family, order, genus, calories, fat, sugar, carbs, protein);
 
         searchButton.addActionListener(new ActionListener()
         {
