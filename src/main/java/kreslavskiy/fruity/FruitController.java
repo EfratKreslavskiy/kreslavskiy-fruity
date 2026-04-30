@@ -49,8 +49,7 @@ public class FruitController
         ApiKey apiKey = new ApiKey();
         String keyString = apiKey.get();
 
-        FruityService fruitService =  new FruityServiceFactory().create();
-        Disposable disposable = fruitService.getFruit(fruitName)
+        Disposable disposable = fruityService.getFruit(fruitName)
                 // tells Rx to request the data on a background Thread
                 .subscribeOn(Schedulers.io())
                 // tells Rx to handle the response on Swing's main Thread
@@ -59,7 +58,7 @@ public class FruitController
                         this:: handleResponse,
                         Throwable:: printStackTrace);
 
-        UnsplashService unsplashService = new UnsplashServiceFactory().create();
+
         Disposable imageDisposable = unsplashService.getUnsplash(keyString, fruitName)
                 // tells Rx to request the data on a background Thread
                 .subscribeOn(Schedulers.io())
